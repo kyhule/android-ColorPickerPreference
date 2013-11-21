@@ -30,6 +30,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.larswerkman.holocolorpicker.ColorPicker;
+
 /**
  * A preference type that allows a user to choose a time
  * @author Sergey Margaritov
@@ -39,7 +41,7 @@ public class ColorPickerPreference
 		Preference
 	implements
 		Preference.OnPreferenceClickListener,
-		ColorPickerDialog.OnColorChangedListener {
+		 ColorPicker.OnColorChangedListener {
 
 	View mView;
 	ColorPickerDialog mDialog;
@@ -154,12 +156,7 @@ public class ColorPickerPreference
 	protected void showDialog(Bundle state) {
 		mDialog = new ColorPickerDialog(getContext(), mValue);
 		mDialog.setOnColorChangedListener(this);
-		if (mAlphaSliderEnabled) {
-			mDialog.setAlphaSliderVisible(true);
-		}
-		if (mHexValueEnabled) {
-			mDialog.setHexValueEnabled(true);
-		}
+		
 		if (state != null) {
 			mDialog.onRestoreInstanceState(state);
 		}
